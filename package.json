@@ -1,0 +1,19 @@
+{
+  "name": "legoflow-config",
+  "version": "0.0.2",
+  "description": "the global config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/legoflow/config.git"
+  },
+  "author": "lijialiang@yy.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/legoflow/config/issues"
+  },
+  "homepage": "https://github.com/legoflow/config#readme"
+}
