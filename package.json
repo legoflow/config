@@ -1,6 +1,6 @@
 {
   "name": "legoflow-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "the global config",
   "main": "index.js",
   "scripts": {

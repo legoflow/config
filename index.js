@@ -15,6 +15,7 @@ const defaultConfig = {
     editor: 'VSCode',
     lab: false,
     nodeBin: '',
+    customProjectPath: '',
 };
 
 let config = defaultConfig;
