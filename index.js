@@ -40,6 +40,9 @@ exports.getConfig = ( ) => {
 }
 
 exports.set = ( name, value ) => {
+    value == 'true' && ( value = true );
+    value == 'false' && ( value = false );
+
     config[ name ] = value;
 
     writeConfig( );
