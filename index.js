@@ -26,6 +26,8 @@ const writeConfig = ( ) => {
 
 const readConfig = ( ) => {
     config = JSON.parse( fs.readFileSync( globalConfigPath, 'utf8' ) );
+
+    return config;
 }
 
 if ( !fs.existsSync( globalConfigPath ) ) {
@@ -33,10 +35,6 @@ if ( !fs.existsSync( globalConfigPath ) ) {
 }
 else {
     readConfig( );
-}
-
-exports.getConfig = ( ) => {
-    return config;
 }
 
 exports.set = ( name, value ) => {
@@ -49,7 +47,12 @@ exports.set = ( name, value ) => {
 };
 
 exports.get = ( name ) => {
-    return config[ name ];
+    if ( !name ) {
+        return readConfig( );
+    }
+    else {
+        return config[ name ];
+    }
 };
 
 exports.clean = ( ) => {
