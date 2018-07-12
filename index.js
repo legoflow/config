@@ -9,13 +9,22 @@ const userRoot = os.homedir( );
 const globalConfigPath = path.resolve( userRoot, './.legoflow_config' );
 
 const defaultConfig = {
+    // 开发者
     user: '',
+    // 自动打开 chrome
     autoOpenChrome: true,
+    // 启动端口号
     port: 3000,
+    // 常用编辑器
     editor: 'VSCode',
+    // 是否打开 实验室 功能
     lab: false,
+    // node bin 绝对路径
     nodeBin: '',
+    // 自定义项目类型本地绝对路径
     customProjectPath: '',
+    // 加载 npm legoflow 模板
+    loadNPMLegoFlowTemplate: false,
 };
 
 let config = defaultConfig;
