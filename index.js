@@ -1,71 +1,69 @@
-'use strict';
+'use strict'
 
-const os = require('os');
-const path = require('path');
-const fs = require('fs');
+const os = require('os')
+const path = require('path')
+const fs = require('fs')
 
-const userRoot = os.homedir( );
+const userRoot = os.homedir()
 
-const globalConfigPath = path.resolve( userRoot, './.legoflow_config' );
+const globalConfigPath = path.resolve(userRoot, './.legoflow_config')
 
 const defaultConfig = {
-    // 开发者
-    user: '',
-    // 自动打开 chrome
-    autoOpenChrome: true,
-    // 启动端口号
-    port: 3000,
-    // 常用编辑器
-    editor: 'VSCode',
-    // 是否打开 实验室 功能
-    lab: false,
-    // node bin 绝对路径
-    nodeBin: '',
-    // 自定义项目类型本地绝对路径
-    customProjectPath: '',
-    // 加载 npm legoflow 模板
-    loadNPMLegoFlowTemplate: false,
-};
-
-let config = defaultConfig;
-
-const writeConfig = ( ) => {
-    fs.writeFileSync( globalConfigPath, JSON.stringify( config ), 'utf8' );
+  // 开发者
+  user: '',
+  // 自动打开 chrome
+  autoOpenChrome: true,
+  // 启动端口号
+  port: 3000,
+  // 常用编辑器
+  editor: 'VSCode',
+  // 是否打开 实验室 功能
+  lab: false,
+  // node bin 绝对路径
+  nodeBin: '',
+  // 自定义项目类型本地绝对路径
+  customProjectPath: '',
+  // 加载 npm legoflow 模板
+  loadNPMLegoFlowTemplate: false
 }
 
-const readConfig = ( ) => {
-    config = JSON.parse( fs.readFileSync( globalConfigPath, 'utf8' ) );
+let config = defaultConfig
 
-    return config;
+const writeConfig = () => {
+  fs.writeFileSync(globalConfigPath, JSON.stringify(config), 'utf8')
 }
 
-if ( !fs.existsSync( globalConfigPath ) ) {
-    writeConfig( );
+const readConfig = () => {
+  config = JSON.parse(fs.readFileSync(globalConfigPath, 'utf8'))
+
+  return config
 }
-else {
-    readConfig( );
+
+if (!fs.existsSync(globalConfigPath)) {
+  writeConfig()
+} else {
+  readConfig()
 }
 
-exports.set = ( name, value ) => {
-    value == 'true' && ( value = true );
-    value == 'false' && ( value = false );
+exports.set = (name, value) => {
+  value == 'true' && (value = true)
+  value == 'false' && (value = false)
 
-    config[ name ] = value;
+  config[ name ] = value
 
-    writeConfig( );
-};
+  writeConfig()
+}
 
-exports.get = ( name ) => {
-    if ( !name ) {
-        return readConfig( );
-    }
-    else {
-        return config[ name ];
-    }
-};
+exports.get = (name) => {
+  if (!name) {
+    return readConfig()
+  } else {
+    return config[ name ]
+  }
+}
 
-exports.clean = ( ) => {
-    config = defaultConfig;
+exports.clean = () => {
+  config = defaultConfig
 
-    writeConfig( );
-};
+  writeConfig()
+}
